@@ -3,11 +3,20 @@ name: SoH Project Runner
 on:
   push:
     branches: 
-      - dev
+      - main
 
 jobs:
-  production-deploy:
+  my-job:
     runs-on: self-hosted
     steps:
-      - run: echo 'Hello, My first Github Actions!'
+      - name: Pull latest code
+        run: git pull
 
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          fi
+
+      - name: Run Streamlit app
+        run: streamlit run app.py --server.runOnSave false --server.fileWatcherType none
