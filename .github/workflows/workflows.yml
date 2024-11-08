@@ -7,6 +7,6 @@ on:
 
 jobs:
   runs-on: self-hosted
-  stpes:
+  steps:
     - run: echo 'Hello, My first Github Actions!'
 
