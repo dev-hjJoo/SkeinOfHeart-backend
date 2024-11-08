@@ -1,0 +1,12 @@
+name: SoH Project Runner
+
+on:
+  push:
+    branches: 
+      - dev
+
+jobs:
+  runs-on: [self-hosted', 'macOS', 'X64']
+  stpes:
+    - run: echo 'Hello, My first Github Actions!'
+
