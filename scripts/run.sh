@@ -2,4 +2,4 @@
 
 cd `dirname $0`/..
 
-streamlit run front/app.py --server.runOnSave false --server.fileWatcherType none
+nohub streamlit run front/app.py --server.runOnSave false --server.fileWatcherType none
