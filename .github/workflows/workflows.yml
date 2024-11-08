@@ -9,17 +9,15 @@ jobs:
   production-deploy:
     runs-on: self-hosted
     steps:
-      - name: Configure Git
-        run: git remote set-url origin https://${{ secrets.TOKEN }}@github.com/${{ secrets.USERNAME }}/SkeinOfHeart-backend
-
-      - name: Pull latest code
-        run: git pull origin main
+      - name: Checkout repository
+        uses: actions/checkout@v4 
+      
 
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
+            scripts/install.sh
           fi
 
       - name: Run Streamlit app
-        run: streamlit run app.py --server.runOnSave false --server.fileWatcherType none
+        run: scripts/run.sh
